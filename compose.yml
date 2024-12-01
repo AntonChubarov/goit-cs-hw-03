@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: hw3-postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: hw3
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo:latest
+    container_name: hw3-mongo-db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  postgres-data:
+  mongo-data:
